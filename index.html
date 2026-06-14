@@ -596,7 +596,47 @@ section { position: relative; }
     font-size:.8rem;
     color:#e2e8f0;
 }
+.project-card.featured{
+    grid-column:span 1;
+}
 
+.project-title{
+    min-height:72px;
+}
+
+.project-desc{
+    min-height:120px;
+}
+
+.project-thumb{
+    position:relative;
+}
+
+.project-thumb::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.25),
+        transparent
+    );
+}
+
+@media (max-width:768px){
+
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-title{
+        min-height:auto;
+    }
+
+    .project-desc{
+        min-height:auto;
+    }
+}
 
 /* CERTIFICATIONS & INTERNSHIPS */
 #certs {
@@ -986,100 +1026,153 @@ footer {
 
     <div class="projects-grid">
 
-      <!-- FEATURED PROJECT -->
+      <!-- Project 1 -->
       <div class="project-card featured reveal">
-        <div class="project-thumb project-thumb-4">
+        <div class="project-thumb">
           <div class="project-thumb-inner">🤖</div>
-          
         </div>
-        <div class="project-body" style="display:flex;flex-direction:column;justify-content:center;">
-          <div class="project-badge">⭐ Featured Research Project</div>
-          <h3 class="project-title" style="font-size:1.2rem;">Adaptive Human-AI Collaborative Digital Twin for Intelligent Robotic Arm Optimization in Industry 5.0</h3>
-          <p class="project-desc">A cutting-edge research project developing a digital twin framework that enables seamless human-AI collaboration for optimizing robotic arm performance in Industry 5.0 environments. Integrates real-time adaptive algorithms, human intention recognition, and intelligent decision systems for precision manufacturing.</p>
-          <div class="project-tags">
-            <span class="tag">Digital Twin</span>
-            <span class="tag">Industry 5.0</span>
-            <span class="tag">Robotics</span>
-            <span class="tag">Human-AI</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Python</span>
-            <span class="tag">IoT</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card featured reveal">
-    <div class="project-thumb">
-        <div class="project-thumb-inner">🤖</div>
-    </div>
 
-    <div class="project-body">
-        <div class="project-badge">⭐ Featured Research Project</div>
-
-        <h3 class="project-title">
-            Adaptive Human-AI Collaborative Digital Twin for Intelligent Robotic Arm Optimization in Industry 5.0
-        </h3>
-
-        <p class="project-desc">
-            A cutting-edge research project developing a digital twin framework that enables seamless human-AI collaboration for optimizing robotic arm performance in Industry 5.0 environments. Integrates real-time adaptive algorithms, human intention recognition, and intelligent decision systems for precision manufacturing.
-        </p>
-
-        <div class="project-tags">
-            <span class="tag">Digital Twin</span>
-            <span class="tag">Industry 5.0</span>
-            <span class="tag">Robotics</span>
-            <span class="tag">Human-AI</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Python</span>
-            <span class="tag">IoT</span>
-        </div>
-    </div>
-</div>
-
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-thumb project-thumb-1">
-          <div class="project-thumb-inner">🔍</div>
-          
-        </div>
         <div class="project-body">
-          <div class="project-badge">Data Science</div>
-          <h3 class="project-title">Crime Pattern Visualization Analysis</h3>
-          <p class="project-desc">Interactive data visualization tool for analyzing crime pattern trends and geographical hotspot mapping using Python and advanced analytics.</p>
+          <div class="project-badge">⭐ Featured Research Project</div>
+
+          <h3 class="project-title">
+            Adaptive Human-AI Collaborative Digital Twin for Intelligent Robotic Arm Optimization in Industry 5.0
+          </h3>
+
+          <p class="project-desc">
+            A cutting-edge research project developing a digital twin framework that enables seamless human-AI collaboration for optimizing robotic arm performance in Industry 5.0 environments. Integrates real-time adaptive algorithms, human intention recognition, and intelligent decision systems for precision manufacturing.
+          </p>
+
           <div class="project-tags">
+            <span class="tag">Digital Twin</span>
+            <span class="tag">Industry 5.0</span>
+            <span class="tag">Robotics</span>
+            <span class="tag">Human-AI</span>
+            <span class="tag">Machine Learning</span>
             <span class="tag">Python</span>
-            <span class="tag">Data Viz</span>
-            <span class="tag">Analytics</span>
-            <span class="tag">Pandas</span>
+            <span class="tag">IoT</span>
           </div>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-thumb project-thumb-2">
-          <div class="project-thumb-inner">☢</div>
-          
+      <!-- Project 2 -->
+      <div class="project-card featured reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-inner">🧠</div>
         </div>
+
+        <div class="project-body">
+          <div class="project-badge">✦ AI Innovation Project</div>
+
+          <h3 class="project-title">
+            AI Multi-Agent Project Management and Collaboration Platform
+          </h3>
+
+          <p class="project-desc">
+            An intelligent AI-powered platform designed to automate project planning, task management, risk analysis, meeting intelligence, documentation generation, and team collaboration through specialized AI agents.
+          </p>
+
+          <div class="project-tags">
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Groq LLM</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Railway</span>
+            <span class="tag">Vercel</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-thumb">
+          <div class="project-thumb-inner">☢</div>
+        </div>
+
         <div class="project-body">
           <div class="project-badge">Smart Mode</div>
+
           <h3 class="project-title">Living Memory Vault</h3>
-          <p class="project-desc">Designed an AI-based memory management system that organizes photos and videos using smart tagging, classification, and automatic memory highlights for easy retrieval and viewing.</p>
+
+          <p class="project-desc">
+            Designed an AI-based memory management system that organizes photos and videos using smart tagging, classification, and automatic memory highlights for easy retrieval and viewing.
+          </p>
+
           <div class="project-tags">
             <span class="tag">HTML/CSS</span>
-            <span class="tag"> Machine Learning</span>
+            <span class="tag">Machine Learning</span>
             <span class="tag">Backend</span>
             <span class="tag">API</span>
           </div>
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-thumb project-thumb-3">
-          <div class="project-thumb-inner">🧩</div>
-          
+      <!-- Project 4 -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-thumb">
+          <div class="project-thumb-inner">🔍</div>
         </div>
+
+        <div class="project-body">
+          <div class="project-badge">Data Science</div>
+
+          <h3 class="project-title">
+            Crime Pattern Visualization Analysis
+          </h3>
+
+          <p class="project-desc">
+            Interactive data visualization tool for analyzing crime pattern trends and geographical hotspot mapping using Python and advanced analytics.
+          </p>
+
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Analytics</span>
+            <span class="tag">Pandas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-thumb">
+          <div class="project-thumb-inner">🎓</div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-badge">Web Platform</div>
+
+          <h3 class="project-title">Digital Campus</h3>
+
+          <p class="project-desc">
+            Smart digital campus platform for managing attendance, assignments, communication, student records, and academic activities with an efficient and user-friendly interface.
+          </p>
+
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-thumb">
+          <div class="project-thumb-inner">🧩</div>
+        </div>
+
         <div class="project-body">
           <div class="project-badge">Web App</div>
+
           <h3 class="project-title">Quiz Application</h3>
-          <p class="project-desc">Dynamic interactive quiz application with score tracking, timer functionality, category-based questions, and a clean intuitive user interface.</p>
+
+          <p class="project-desc">
+            Dynamic interactive quiz application with score tracking, timer functionality, category-based questions, and a clean intuitive user interface.
+          </p>
+
           <div class="project-tags">
             <span class="tag">JavaScript</span>
             <span class="tag">HTML/CSS</span>
@@ -1087,36 +1180,10 @@ footer {
           </div>
         </div>
       </div>
-      <div class="project-card reveal reveal-delay-3">
-  <div class="project-thumb project-thumb-3">
-    <div class="project-thumb-inner">🎓</div>
-    
-  </div>
 
-  <div class="project-body">
-    <div class="project-badge">Web Platform</div>
-
-    <h3 class="project-title">Digital Campus</h3>
-
-    <p class="project-desc">
-      Smart digital campus platform for managing attendance, assignments, communication, student records, and academic activities with an efficient and user-friendly interface.
-    </p>
-
-    <div class="project-tags">
-      <span class="tag">React</span>
-      <span class="tag">Node.js</span>
-      <span class="tag">MongoDB</span>
-    </div>
-  </div>
-</div>
-     
-
-
-  
     </div>
   </div>
 </section>
-
 <!-- INTERNSHIPS & CERTIFICATIONS -->
 <section id="certs">
   <div class="container">
