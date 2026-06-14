@@ -432,62 +432,77 @@ section { position: relative; }
 .edu-year { font-size: 0.75rem; color: #666; font-family: 'JetBrains Mono', monospace; }
 
 /* SKILLS */
-#skills {
-  padding: 7rem 0;
-  background: var(--gradient-dark);
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
 }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+
+.skill-card{
+    background:rgba(15,23,42,0.9);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:24px;
+    backdrop-filter:blur(15px);
+    transition:.4s ease;
 }
-.skill-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
-  padding: 1.8rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, border-color 0.3s;
+
+.skill-card:hover{
+    transform:translateY(-8px);
+    border-color:#00d4ff;
+    box-shadow:0 15px 35px rgba(0,212,255,.15);
 }
-.skill-card:hover { transform: translateY(-5px); border-color: rgba(6,182,212,0.3); }
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(to right, var(--blue), var(--cyan));
-  opacity: 0;
-  transition: opacity 0.3s;
+
+.sk-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
 }
-.skill-card:hover::before { opacity: 1; }
-.skill-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
+
+.sk-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.6rem;
+    border-radius:15px;
+    background:rgba(0,212,255,.12);
 }
-.skill-level-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--cyan);
-  margin-bottom: 0.8rem;
+
+.sk-header h4{
+    color:#ffffff;
+    font-size:1.1rem;
+    font-weight:700;
 }
-.skill-bar-bg {
-  width: 100%;
-  height: 4px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 2px;
-  overflow: hidden;
+
+.skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
-.skill-bar {
-  height: 100%;
-  background: linear-gradient(to right, var(--blue), var(--cyan));
-  border-radius: 2px;
-  width: 0;
-  transition: width 1.2s ease;
+
+.skill-tag{
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    color:#e2e8f0;
+    font-size:.85rem;
+    transition:.3s ease;
+}
+
+.skill-tag:hover{
+    background:rgba(0,212,255,.15);
+    border-color:#00d4ff;
+    color:#67e8f9;
+}
+
+@media(max-width:768px){
+    .skills-grid{
+        grid-template-columns:1fr;
+    }
 }
 
 /* PROJECTS */
@@ -504,30 +519,39 @@ section { position: relative; }
     gap:28px;
 }
 
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+}
+
 .project-card{
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(15,23,42,0.9);
+    border:1px solid rgba(255,255,255,0.1);
     border-radius:24px;
     overflow:hidden;
-    transition:.4s ease;
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
+    transition:all .4s ease;
     height:100%;
     display:flex;
     flex-direction:column;
+    position:relative;
 }
 
 .project-card:hover{
     transform:translateY(-10px);
     border-color:#00d4ff;
-    box-shadow:0 20px 40px rgba(0,212,255,.15);
+    box-shadow:
+        0 20px 40px rgba(0,212,255,.18),
+        0 0 30px rgba(0,212,255,.15);
 }
 
 .project-card.featured{
-    border:2px solid rgba(0,212,255,.35);
+    border:2px solid rgba(0,212,255,.4);
     background:linear-gradient(
         135deg,
-        rgba(0,212,255,.08),
-        rgba(255,255,255,.03)
+        rgba(0,212,255,.12),
+        rgba(15,23,42,.95)
     );
 }
 
@@ -536,16 +560,30 @@ section { position: relative; }
     display:flex;
     align-items:center;
     justify-content:center;
+    position:relative;
     background:linear-gradient(
         135deg,
-        #0f2027,
-        #203a43,
-        #2c5364
+        #0f172a,
+        #1e293b,
+        #334155
+    );
+}
+
+.project-thumb::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.35),
+        transparent
     );
 }
 
 .project-thumb-inner{
-    font-size:4rem;
+    font-size:4.5rem;
+    z-index:2;
+    filter:drop-shadow(0 0 20px rgba(255,255,255,.25));
 }
 
 .project-body{
@@ -558,28 +596,34 @@ section { position: relative; }
 .project-badge{
     display:inline-block;
     width:max-content;
-    padding:6px 14px;
+    padding:7px 16px;
     border-radius:999px;
-    background:rgba(0,212,255,.12);
-    color:#00d4ff;
-    font-size:.8rem;
-    font-weight:600;
-    margin-bottom:14px;
+    background:rgba(0,212,255,.15);
+    border:1px solid rgba(0,212,255,.3);
+    color:#67e8f9;
+    font-size:.82rem;
+    font-weight:700;
+    margin-bottom:15px;
+    letter-spacing:.5px;
 }
 
 .project-title{
+    color:#ffffff;
     font-size:1.3rem;
     font-weight:700;
     line-height:1.5;
-    margin-bottom:12px;
-    color:#fff;
+    margin-bottom:14px;
+    min-height:72px;
+    text-shadow:0 0 10px rgba(255,255,255,.08);
 }
 
 .project-desc{
-    color:#cbd5e1;
+    color:#e2e8f0;
+    font-size:.95rem;
     line-height:1.8;
     margin-bottom:20px;
     flex-grow:1;
+    min-height:120px;
 }
 
 .project-tags{
@@ -591,37 +635,23 @@ section { position: relative; }
 .tag{
     padding:8px 14px;
     border-radius:999px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    color:#f8fafc;
     font-size:.8rem;
-    color:#e2e8f0;
-}
-.project-card.featured{
-    grid-column:span 1;
+    font-weight:500;
+    transition:.3s ease;
 }
 
-.project-title{
-    min-height:72px;
+.tag:hover{
+    background:rgba(0,212,255,.15);
+    border-color:#00d4ff;
+    color:#67e8f9;
 }
 
-.project-desc{
-    min-height:120px;
-}
 
-.project-thumb{
-    position:relative;
-}
 
-.project-thumb::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.25),
-        transparent
-    );
-}
+
 
 @media (max-width:768px){
 
@@ -631,13 +661,21 @@ section { position: relative; }
 
     .project-title{
         min-height:auto;
+        font-size:1.15rem;
     }
 
     .project-desc{
         min-height:auto;
     }
-}
 
+    .project-thumb{
+        height:150px;
+    }
+
+    .project-thumb-inner{
+        font-size:3.5rem;
+    }
+}
 /* CERTIFICATIONS & INTERNSHIPS */
 #certs {
   padding: 7rem 0;
@@ -967,54 +1005,173 @@ footer {
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="container">
-    <span class="section-tag reveal">// 002 — Skills</span>
-    <h2 class="section-title reveal">Technical Expertise</h2>
-    <div class="section-divider reveal"></div>
+    <div class="container">
 
-    <div class="skills-grid">
-      <div class="skill-card reveal reveal-delay-1" data-level="90">
-        <div class="skill-name">HTML &amp; CSS</div>
-        <div class="skill-level-num">90%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="90"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2" data-level="75">
-        <div class="skill-name">Java</div>
-        <div class="skill-level-num">75%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="75"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3" data-level="95">
-        <div class="skill-name">Python</div>
-        <div class="skill-level-num">95%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="95"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-4" data-level="85">
-        <div class="skill-name">Data Science</div>
-        <div class="skill-level-num">85%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="85"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-1" data-level="80">
-        <div class="skill-name">JavaScript</div>
-        <div class="skill-level-num">80%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="80"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-2" data-level="70">
-        <div class="skill-name">Machine Learning</div>
-        <div class="skill-level-num">70%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-3" data-level="65">
-        <div class="skill-name">Cybersecurity</div>
-        <div class="skill-level-num">65%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div>
-      </div>
-      <div class="skill-card reveal reveal-delay-4" data-level="75">
-        <div class="skill-name">Full-Stack Dev</div>
-        <div class="skill-level-num">75%</div>
-        <div class="skill-bar-bg"><div class="skill-bar" data-width="75"></div></div>
-      </div>
+        <span class="section-tag reveal">// 002 — Skills</span>
+        <h2 class="section-title reveal">Technical Expertise</h2>
+        <div class="section-divider reveal"></div>
+
+        <div class="skills-grid">
+
+            <!-- Frontend -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🎨</div>
+                    <h4>Frontend Engineering</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bootstrap 5</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">React.js</span>
+                </div>
+            </div>
+
+            <!-- Backend -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">⚙️</div>
+                    <h4>Backend Development</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <!-- Database -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🗄️</div>
+                    <h4>Database Systems</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Database Design</span>
+                    <span class="skill-tag">Data Management</span>
+                </div>
+            </div>
+
+            <!-- AI & Data Science -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🤖</div>
+                    <h4>AI & Data Science</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Matplotlib</span>
+                </div>
+            </div>
+
+            <!-- AI Engineering -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🧠</div>
+                    <h4>AI Engineering</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Generative AI</span>
+                    <span class="skill-tag">Large Language Models</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Groq API</span>
+                    <span class="skill-tag">Multi-Agent Systems</span>
+                    <span class="skill-tag">RAG</span>
+                    <span class="skill-tag">AI Automation</span>
+                </div>
+            </div>
+
+            <!-- Robotics & Industry 5.0 -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🤖</div>
+                    <h4>Robotics & Industry 5.0</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Digital Twin</span>
+                    <span class="skill-tag">IoT Systems</span>
+                    <span class="skill-tag">Human-AI Collaboration</span>
+                    <span class="skill-tag">Industrial Automation</span>
+                    <span class="skill-tag">Smart Manufacturing</span>
+                </div>
+            </div>
+
+            <!-- Development Tools -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🛠️</div>
+                    <h4>Development Tools</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Chart.js</span>
+                    <span class="skill-tag">Postman</span>
+                </div>
+            </div>
+
+            <!-- Cloud & Deployment -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">☁️</div>
+                    <h4>Cloud & Deployment</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Railway</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Deployment</span>
+                    <span class="skill-tag">Environment Variables</span>
+                </div>
+            </div>
+
+            <!-- Professional Skills -->
+
+            <div class="skill-card reveal">
+                <div class="sk-header">
+                    <div class="sk-icon">🚀</div>
+                    <h4>Professional Skills</h4>
+                </div>
+
+                <div class="skill-tags">
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Critical Thinking</span>
+                    <span class="skill-tag">Team Collaboration</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- PROJECTS -->
@@ -1065,7 +1222,7 @@ footer {
           <div class="project-badge">✦ AI Innovation Project</div>
 
           <h3 class="project-title">
-            AI Multi-Agent Project Management and Collaboration Platform
+            AI Multi-Agent Project Manager
           </h3>
 
           <p class="project-desc">
